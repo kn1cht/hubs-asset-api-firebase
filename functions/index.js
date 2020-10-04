@@ -32,7 +32,7 @@ const getSpreadSheetValsFromApi = async () => {
   const sheetRes = await sheets.spreadsheets.values.get({
     auth,
     spreadsheetId: config.id,
-    range: 'main',
+    range: config.sheet,
     majorDimension: 'COLUMNS',
   });
   return sheetRes.data.values;

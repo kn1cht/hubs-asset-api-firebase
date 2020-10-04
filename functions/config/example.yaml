@@ -1,4 +1,5 @@
 ---
-id: 1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-fileColumnNo: 1
-urlColumnNo: 2
+id: 1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx # Spreadsheet ID
+sheet: main # Sheet Name
+fileColumnNo: 0 # The column of API paths
+urlColumnNo: 1 # The column of destination URLs
