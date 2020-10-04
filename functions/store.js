@@ -1,10 +1,7 @@
 'use strict';
 
 const admin = require('firebase-admin');
-const SECRET = require('./secret.json');
-admin.initializeApp({
-  credential: admin.credential.cert(SECRET)
-});
+admin.initializeApp();
 
 class Store {
   constructor() {

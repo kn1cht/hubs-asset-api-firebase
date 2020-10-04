@@ -1,10 +1,9 @@
 'use strict';
 
+const config = require('config');
 const {firestore} = require('firebase-admin');
 const functions = require('firebase-functions');
 const {google} = require('googleapis');
-const SECRET =  require('./secret.json');
-const SPREADSHEET = require('./spreadsheet.json');
 const store = new (require('./store'))();
 
 exports.httpEvent = functions.https.onRequest(async (req, res) => {
@@ -22,19 +21,17 @@ exports.httpEvent = functions.https.onRequest(async (req, res) => {
       vals: JSON.stringify(sheetVals)
     });
   }
-  const urlIndex = sheetVals[SPREADSHEET.fileColumnNo].indexOf(filename);
-  res.redirect(302, sheetVals[SPREADSHEET.urlColumnNo][urlIndex]);
+  const urlIndex = sheetVals[config.fileColumnNo].indexOf(filename);
+  res.redirect(302, sheetVals[config.urlColumnNo][urlIndex]);
 });
 
 const getSpreadSheetValsFromApi = async () => {
-  const auth = new google.auth.JWT(
-    SECRET.client_email, null, SECRET.private_key,
-    ['https://www.googleapis.com/auth/spreadsheets']
+  const auth = await google.auth.getClient(['https://www.googleapis.com/auth/spreadsheets']
   );
   const sheets = google.sheets({version: 'v4'});
   const sheetRes = await sheets.spreadsheets.values.get({
     auth,
-    spreadsheetId: SPREADSHEET.id,
+    spreadsheetId: config.id,
     range: 'main',
     majorDimension: 'COLUMNS',
   });

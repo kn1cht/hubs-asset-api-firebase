@@ -64,8 +64,3 @@ node_modules/
 
 # dotenv environment variables file
 .env
-
-# user
-credentials.json
-secret.json
-spreadsheet.json
