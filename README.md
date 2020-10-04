@@ -8,6 +8,9 @@
 
 This Firebase project offers an API that returns 302 redirect to URLs written on a Google Sheets. This is useful for editing assets' URLs of [Mozilla Hubs](https://hubs.mozilla.com/) / [Hubs Cloud](https://hubs.mozilla.com/cloud) from outside of Hubs or Spoke.
 
+## Structure
+![](readmeimg/structure.png)
+
 ## Usage
 ### 1. Prepare Firebase Project
 
