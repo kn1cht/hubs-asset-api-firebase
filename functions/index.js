@@ -22,6 +22,7 @@ exports.httpEvent = functions.https.onRequest(async (req, res) => {
     });
   }
   const urlIndex = sheetVals[config.fileColumnNo].indexOf(filename);
+  res.set('Access-Control-Allow-Origin', '*');
   res.redirect(302, sheetVals[config.urlColumnNo][urlIndex]);
 });
 
